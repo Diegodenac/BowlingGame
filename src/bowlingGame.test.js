@@ -5,6 +5,10 @@ function rollMany(g, n, pins) {
     g.roll(pins);
   }
 }
+function rollSpare(g) {
+  g.roll(5);
+  g.roll(5); //spare
+}
 
 describe("BowlingGameTest para obtener Score", () => {
 
@@ -22,8 +26,7 @@ describe("BowlingGameTest para obtener Score", () => {
 
   it("Deberia obtener el Score total en caso de existir un Spare", () => {
     const g = new Game();
-    g.roll(5);
-    g.roll(5); //spare
+    rollSpare(g);
     g.roll(3);
     rollMany(g, 17, 0);
     expect(g.score()).toEqual(16);
