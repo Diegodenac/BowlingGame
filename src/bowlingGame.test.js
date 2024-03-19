@@ -20,5 +20,14 @@ describe("BowlingGameTest para obtener Score", () => {
     expect(g.score()).toEqual(20);
   });
 
+  it("Deberia obtener el Score total en caso de existir un Spare", () => {
+    const g = new Game();
+    g.roll(5);
+    g.roll(5); //spare
+    g.roll(3);
+    rollMany(g, 17, 0);
+    expect(g.score()).toEqual(16);
+  });
+
   
 });

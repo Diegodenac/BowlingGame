@@ -1,14 +1,22 @@
 class Game {
   constructor() {
-    this.sc = 0; 
+    this.rolls= []; 
+    this.currentRoll=0;
   }
 
   roll(pins) {
-    this.sc += pins;
+    this.rolls.push(pins)
+    this.currentRoll++;
   }
 
   score() {
-    return this.sc;
+    let score = 0;
+    let i=0;
+    for(let frame=0; frame<10; frame++){
+      score=score+this.rolls[i]+this.rolls[i+1];
+      i+=2;
+    }
+    return score; 
   }
 }
 
