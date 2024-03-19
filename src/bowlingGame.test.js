@@ -16,9 +16,7 @@ describe("BowlingGameTest para obtener Score", () => {
 
   it("Deberia obtener el Score total para 20 tiros de 1 punto", () => {
     const g = new Game();
-    for(let i=0; i<20; i++){
-      g.roll(1);
-    }
+    rollMany(g, 20, 1);
     expect(g.score()).toEqual(20);
   });
 
