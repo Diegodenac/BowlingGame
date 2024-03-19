@@ -41,5 +41,11 @@ describe("BowlingGameTest para obtener Score", () => {
     expect(g.score()).toEqual(24);
   });
 
+  it("Deberia obtener el Score Perfecto", () => {
+    const g = new Game();
+    rollMany(g, 12, 10); 
+    expect(g.score()).toEqual(300);
+  });
+
   
 });
