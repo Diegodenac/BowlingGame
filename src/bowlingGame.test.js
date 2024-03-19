@@ -1,13 +1,16 @@
 import Game from "./Game";
 
+function rollMany(g, n, pins) {
+  for (let i = 0; i < n; i++) {
+    g.roll(pins);
+  }
+}
+
 describe("BowlingGameTest para obtener Score", () => {
+
   it("Deberia obtener el Score total para 20 tiros de 0 puntos", () => {
     const g = new Game();
-    let n = 20;
-    let pins = 0; 
-    for(let i=0; i<n; i++){
-      g.roll(pins);
-    }
+    rollMany(g, 20, 0);
     expect(g.score()).toEqual(0);
   });
 
