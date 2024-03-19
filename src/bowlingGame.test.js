@@ -32,5 +32,14 @@ describe("BowlingGameTest para obtener Score", () => {
     expect(g.score()).toEqual(16);
   });
 
+  it("Deberia obtener el Score total en caso de existir un Strike", () => {
+    const g = new Game();
+    g.roll(10) //strike
+    g.roll(3);
+    g.roll(4);
+    rollMany(g, 16, 0); 
+    expect(g.score()).toEqual(24);
+  });
+
   
 });
