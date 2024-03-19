@@ -13,22 +13,32 @@ class Game {
     return this.rolls[frameIndex]+this.rolls[frameIndex+1] == 10;
   }
 
+  sumOfBallsInframe(frameIndex){
+    return this.rolls[frameIndex]+this.rolls[frameIndex+1];
+  }
+  spareBonus(frameIndex){
+    return 10+this.rolls[frameIndex+2];
+  }
+  strikeBonus(frameIndex){
+    return 10+this.rolls[frameIndex+1]+this.rolls[frameIndex+2];
+  }
+
   score() {
     let score = 0;
     let frameIndex=0;
     for(let frame=0; frame<10; frame++){
       if(this.rolls[frameIndex] == 10) //strike
       {
-        score+=10+this.rolls[frameIndex+1]+this.rolls[frameIndex+2];
+        score+=this.strikeBonus(frameIndex);
         frameIndex++;
       }
       else if(this.isSpare(frameIndex)) //spare
       {
-        score += 10+this.rolls[frameIndex+2];
+        score += this.spareBonus(frameIndex);
         frameIndex+=2;
       }
       else{
-        score +=this.rolls[frameIndex]+this.rolls[frameIndex+1];
+        score += this.sumOfBallsInframe(frameIndex);
         frameIndex+=2;
       }
     }
